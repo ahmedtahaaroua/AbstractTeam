@@ -100,5 +100,29 @@ CREATE TABLE `tables` (
 
 /*Data for the table `tables` */
 
+/*Table structure for table `facture` */
+
+DROP TABLE IF EXISTS `facture`;
+
+CREATE TABLE `facture` (
+  `idfacture` double NOT NULL,
+  `somme` double NOT NULL,
+  PRIMARY KEY (`idfacture`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `facture` */
+
+/*Table structure for table `bonplans` */
+
+DROP TABLE IF EXISTS `bonplans`;
+
+CREATE TABLE `bonplans` (
+  `idBonPlan` double NOT NULL,
+  `description` varchar(1000) NOT NULL,
+  PRIMARY KEY (`idBonPlan`),
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `facture` */
+
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
