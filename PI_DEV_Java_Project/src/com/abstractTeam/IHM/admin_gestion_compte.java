@@ -11,9 +11,9 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTree;
 
-public class admin_Commentaire {
+public class admin_gestion_compte {
 
-	private JFrame frame;
+	JFrame frame;
 
 	/**
 	 * Launch the application.
@@ -22,7 +22,7 @@ public class admin_Commentaire {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					admin_Commentaire window = new admin_Commentaire();
+					admin_gestion_compte window = new admin_gestion_compte();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -34,7 +34,7 @@ public class admin_Commentaire {
 	/**
 	 * Create the application.
 	 */
-	public admin_Commentaire() {
+	public admin_gestion_compte() {
 		initialize();
 	}
 
@@ -69,36 +69,42 @@ public class admin_Commentaire {
 		lblNewLabel_2.setBounds(10, 70, 81, 14);
 		frame.getContentPane().add(lblNewLabel_2);
 		
-		JButton btnNewButton = new JButton("Restaurant");
-		btnNewButton.setBounds(2, 99, 108, 23);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnRestaurant = new JButton("Restaurant");
+		btnRestaurant.setBounds(2, 99, 108, 23);
+		frame.getContentPane().add(btnRestaurant);
 		
-		JButton btnNewButton_1 = new JButton("Client\r\n");
-		btnNewButton_1.setBounds(2, 133, 108, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		JButton btnClient = new JButton("Client\r\n");
+		btnClient.setBounds(2, 133, 108, 23);
+		frame.getContentPane().add(btnClient);
 		
 		JLabel lblNewLabel_3 = new JLabel("Gestion Commentaire\r\n");
 		lblNewLabel_3.setForeground(Color.RED);
 		lblNewLabel_3.setBounds(10, 189, 108, 14);
 		frame.getContentPane().add(lblNewLabel_3);
 		
-		JButton btnNewButton_2 = new JButton("Commentaire");
-		btnNewButton_2.setBounds(2, 214, 116, 23);
-		frame.getContentPane().add(btnNewButton_2);
+		JButton btnCommentaire = new JButton("Commentaire");
+		btnCommentaire.setBounds(2, 214, 116, 23);
+		frame.getContentPane().add(btnCommentaire);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setEnabled(false);
-		comboBox.setEditable(true);
-		comboBox.setToolTipText("test2");
-		comboBox.setBounds(148, 141, 96, 23);
-		frame.getContentPane().add(comboBox);
+		JComboBox comboBoxNouveauClient = new JComboBox();
+		comboBoxNouveauClient.setToolTipText("test2");
+		comboBoxNouveauClient.setBounds(148, 141, 96, 23);
+		frame.getContentPane().add(comboBoxNouveauClient);
 		
-		JButton btnNewButton_3 = new JButton("Consulter");
-		btnNewButton_3.setBounds(304, 141, 89, 23);
-		frame.getContentPane().add(btnNewButton_3);
+		JButton btnNouveauConsulter = new JButton("Consulter");
+		btnNouveauConsulter.setBounds(304, 141, 89, 23);
+		frame.getContentPane().add(btnNouveauConsulter);
 		
-		JLabel lblNewLabel_4 = new JLabel("nouveau demande des commentaires");
+		JLabel lblNewLabel_4 = new JLabel("nouveau demande des clients");
 		lblNewLabel_4.setBounds(148, 99, 209, 14);
 		frame.getContentPane().add(lblNewLabel_4);
+		
+		JComboBox comboBoxAcienClient = new JComboBox();
+		comboBoxAcienClient.setBounds(148, 196, 96, 20);
+		frame.getContentPane().add(comboBoxAcienClient);
+		
+		JButton btnAncienConsulter = new JButton("Consulter");
+		btnAncienConsulter.setBounds(304, 195, 89, 23);
+		frame.getContentPane().add(btnAncienConsulter);
 	}
 }
