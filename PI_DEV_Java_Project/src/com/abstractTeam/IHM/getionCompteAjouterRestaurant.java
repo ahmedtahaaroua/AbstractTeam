@@ -1,21 +1,29 @@
-package com.abstractTeam.IHM;
+package src.com.abstractTeam.IHM;
 
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JSeparator;
-import javax.swing.SwingConstants;
-import javax.swing.JTextPane;
-import javax.swing.JLabel;
+
 import java.awt.Color;
+import java.awt.EventQueue;
 import java.awt.Font;
-import javax.swing.JComboBox;
+
 import javax.swing.JButton;
-import javax.swing.JMenuBar;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JSeparator;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+
 
 public class getionCompteAjouterRestaurant {
 
 	private JFrame frame;
+	private JTextField textFieldNomRestaurant;
+	private JTextField textFieldMail;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
 
 	/**
 	 * Launch the application.
@@ -44,6 +52,7 @@ public class getionCompteAjouterRestaurant {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 905, 518);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,7 +62,6 @@ public class getionCompteAjouterRestaurant {
 		separator.setOrientation(SwingConstants.VERTICAL);
 		separator.setBounds(254, 65, 61, 375);
 		frame.getContentPane().add(separator);
-		
 		JLabel lblGestionCompte = new JLabel("Gestion Compte");
 		lblGestionCompte.setForeground(Color.RED);
 		lblGestionCompte.setBounds(10, 117, 109, 14);
@@ -109,5 +117,66 @@ public class getionCompteAjouterRestaurant {
 		JButton btnLivraison = new JButton("Livraison");
 		btnLivraison.setBounds(0, 417, 251, 23);
 		frame.getContentPane().add(btnLivraison);
+		
+		JLabel lblNewLabel = new JLabel("Nom Restaurant :");
+		lblNewLabel.setBounds(325, 86, 85, 14);
+		frame.getContentPane().add(lblNewLabel);
+		
+		textFieldNomRestaurant = new JTextField();
+		textFieldNomRestaurant.setBounds(470, 83, 216, 20);
+		frame.getContentPane().add(textFieldNomRestaurant);
+		textFieldNomRestaurant.setColumns(10);
+		
+		JLabel lblMail = new JLabel("Mail :");
+		lblMail.setBounds(325, 133, 46, 14);
+		frame.getContentPane().add(lblMail);
+		
+		textFieldMail = new JTextField();
+		textFieldMail.setColumns(10);
+		textFieldMail.setBounds(470, 130, 216, 20);
+		frame.getContentPane().add(textFieldMail);
+		
+		JLabel lblConfirmerMotDe = new JLabel("Confirmer mot de passe :");
+		lblConfirmerMotDe.setBounds(325, 227, 124, 14);
+		frame.getContentPane().add(lblConfirmerMotDe);
+		
+		textField_2 = new JTextField();
+		textField_2.setColumns(10);
+		textField_2.setBounds(470, 224, 216, 20);
+		frame.getContentPane().add(textField_2);
+		
+		JLabel lblNombreTable = new JLabel("Nombre Table :");
+		lblNombreTable.setBounds(325, 277, 134, 14);
+		frame.getContentPane().add(lblNombreTable);
+		
+		textField_3 = new JTextField();
+		textField_3.setColumns(10);
+		textField_3.setBounds(470, 274, 216, 20);
+		frame.getContentPane().add(textField_3);
+		
+		JLabel lblMotDePasse = new JLabel("Mot de passe :");
+		lblMotDePasse.setBounds(325, 181, 124, 14);
+		frame.getContentPane().add(lblMotDePasse);
+		
+		textField_4 = new JTextField();
+		textField_4.setColumns(10);
+		textField_4.setBounds(470, 178, 216, 20);
+		frame.getContentPane().add(textField_4);
+		
+		JLabel lblAdresse = new JLabel("Adresse :");
+		lblAdresse.setBounds(325, 329, 46, 14);
+		frame.getContentPane().add(lblAdresse);
+		
+		JTextArea textArea = new JTextArea();
+		textArea.setBounds(470, 324, 216, 116);
+		frame.getContentPane().add(textArea);
+		
+		JButton btnNewButton = new JButton("Images");
+		btnNewButton.setBounds(339, 456, 89, 23);
+		frame.getContentPane().add(btnNewButton);
+		
+		JButton btnOk = new JButton("Ok");
+		btnOk.setBounds(454, 456, 89, 23);
+		frame.getContentPane().add(btnOk);
 	}
 }
