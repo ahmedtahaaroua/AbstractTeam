@@ -63,7 +63,7 @@ CREATE TABLE `restaurants` (
   `specialite` enum('Fast Food','Salon de thé','Resaturant') DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `FK_restaurants` (`id_restaurateur`),
-  CONSTRAINT `FK_restaurants` FOREIGN KEY (`id_restaurateur`) REFERENCES `restaurants` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `FK_restaurants` FOREIGN KEY (`id_restaurateur`) REFERENCES `restaurateurs` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 /*Data for the table `restaurants` */
