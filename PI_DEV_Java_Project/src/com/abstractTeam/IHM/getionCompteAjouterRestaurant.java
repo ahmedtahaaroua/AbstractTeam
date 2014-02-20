@@ -1,4 +1,4 @@
-package src.com.abstractTeam.IHM;
+package com.abstractTeam.IHM;
 
 
 
