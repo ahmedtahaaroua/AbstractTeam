@@ -22,8 +22,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="photos" view="colnames">
-<left>222</left>
-<top>332</top>
+<left>232</left>
+<top>398</top>
 <width>139</width>
 <height>152</height>
 <sql_create_table>CREATE TABLE `photos` (
@@ -31,14 +31,17 @@
   `url` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
   `id_resto` int(11) DEFAULT NULL,
+  `idBonPlan` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_resto` (`id_resto`),
+  KEY `idBonPlan` (`idBonPlan`),
+  CONSTRAINT `photos_ibfk_2` FOREIGN KEY (`idBonPlan`) REFERENCES `bonplans` (`idBonPlan`),
   CONSTRAINT `photos_ibfk_1` FOREIGN KEY (`id_resto`) REFERENCES `restaurants` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="plats" view="colnames">
-<left>29</left>
-<top>341</top>
+<left>44</left>
+<top>645</top>
 <width>128</width>
 <height>163</height>
 <sql_create_table>CREATE TABLE `plats` (
@@ -47,14 +50,15 @@
   `description` varchar(1000) NOT NULL,
   `prix` double NOT NULL,
   `id_photo` int(11) DEFAULT NULL,
+  `note` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `plats_ibfk_1` (`id_photo`),
   CONSTRAINT `plats_ibfk_1` FOREIGN KEY (`id_photo`) REFERENCES `photos` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="restaurants" view="colnames">
-<left>440</left>
-<top>299</top>
+<left>476</left>
+<top>391</top>
 <width>186</width>
 <height>214</height>
 <sql_create_table>CREATE TABLE `restaurants` (
@@ -64,8 +68,8 @@
   `nbrTable` int(4) NOT NULL,
   `specialite` enum('Fast Food','Salon de thé','Resaturant') DEFAULT NULL,
   `id_photo` int(11) DEFAULT NULL,
-  `id_restaurateur` int(11) DEFAULT NULL,
   `id_geo` int(11) DEFAULT NULL,
+  `id_restaurateur` int(11) DEFAULT NULL,
   `note` double DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_geo` (`id_geo`),
@@ -76,8 +80,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="restaurateurs" view="colnames">
-<left>932</left>
-<top>302</top>
+<left>745</left>
+<top>649</top>
 <width>180</width>
 <height>197</height>
 <sql_create_table>CREATE TABLE `restaurateurs` (
@@ -92,8 +96,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="tables" view="colnames">
-<left>988</left>
-<top>113</top>
+<left>924</left>
+<top>452</top>
 <width>118</width>
 <height>146</height>
 <sql_create_table>CREATE TABLE `tables` (
@@ -107,8 +111,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="positionGeo" view="colnames">
-<left>758</left>
-<top>437</top>
+<left>783</left>
+<top>287</top>
 <width>131</width>
 <height>129</height>
 <sql_create_table>CREATE TABLE `positiongeo` (
@@ -119,27 +123,29 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="reservations" view="colnames">
-<left>736</left>
-<top>49</top>
+<left>739</left>
+<top>100</top>
 <width>142</width>
 <height>165</height>
 <sql_create_table>CREATE TABLE `reservations` (
   `idReservation` int(11) NOT NULL AUTO_INCREMENT,
   `choix` varchar(20) DEFAULT NULL,
   `date` date DEFAULT NULL,
-  `idClient` int(11) DEFAULT NULL,
   `idFacture` int(11) DEFAULT NULL,
+  `idClient` int(11) DEFAULT NULL,
   `idResto` int(11) DEFAULT NULL,
   PRIMARY KEY (`idReservation`),
+  UNIQUE KEY `idFacture` (`idFacture`),
   KEY `idClient` (`idClient`),
   KEY `idResto` (`idResto`),
+  CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `clients` (`idClient`),
   CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`idResto`) REFERENCES `restaurants` (`id`),
-  CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `clients` (`idClient`)
+  CONSTRAINT `reservations_ibfk_3` FOREIGN KEY (`idFacture`) REFERENCES `factures` (`idFacture`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="clients" view="colnames">
-<left>488</left>
-<top>40</top>
+<left>513</left>
+<top>172</top>
 <width>127</width>
 <height>183</height>
 <sql_create_table>CREATE TABLE `clients` (
@@ -150,12 +156,15 @@
   `mdp` varchar(200) DEFAULT NULL,
   `adresse` varchar(30) DEFAULT NULL,
   `tel` varchar(30) DEFAULT NULL,
-  PRIMARY KEY (`idClient`)
+  `idPosition` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idClient`),
+  UNIQUE KEY `idPosition` (`idPosition`),
+  CONSTRAINT `clients_ibfk_1` FOREIGN KEY (`idPosition`) REFERENCES `positiongeo` (`id_geo`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="livraisons" view="colnames">
-<left>237</left>
-<top>59</top>
+<left>210</left>
+<top>128</top>
 <width>122</width>
 <height>163</height>
 <sql_create_table>CREATE TABLE `livraisons` (
@@ -168,8 +177,53 @@
   PRIMARY KEY (`idLivraison`),
   KEY `idClient` (`idClient`),
   KEY `idResto` (`idResto`),
-  CONSTRAINT `livraisons_ibfk_2` FOREIGN KEY (`idResto`) REFERENCES `restaurants` (`id`),
-  CONSTRAINT `livraisons_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `clients` (`idClient`)
+  KEY `idFacture` (`idFacture`),
+  CONSTRAINT `livraisons_ibfk_3` FOREIGN KEY (`idFacture`) REFERENCES `factures` (`idFacture`),
+  CONSTRAINT `livraisons_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `clients` (`idClient`),
+  CONSTRAINT `livraisons_ibfk_2` FOREIGN KEY (`idResto`) REFERENCES `restaurants` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="Factures" view="colnames">
+<left>488</left>
+<top>10</top>
+<width>108</width>
+<height>130</height>
+<sql_create_table>CREATE TABLE `factures` (
+  `idFacture` int(11) NOT NULL AUTO_INCREMENT,
+  `somme` double DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`idFacture`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="bonplans" view="colnames">
+<left>396</left>
+<top>610</top>
+<width>108</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `bonplans` (
+  `idBonPlan` int(11) NOT NULL AUTO_INCREMENT,
+  `description` varchar(500) NOT NULL,
+  PRIMARY KEY (`idBonPlan`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="commentaires" view="colnames">
+<left>569</left>
+<top>651</top>
+<width>134</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `commentaires` (
+  `idCommentaire` int(11) NOT NULL AUTO_INCREMENT,
+  `message` varchar(1000) DEFAULT NULL,
+  `idPlat` int(11) DEFAULT NULL,
+  `idClient` int(11) DEFAULT NULL,
+  `idResto` int(11) DEFAULT NULL,
+  PRIMARY KEY (`idCommentaire`),
+  KEY `idClient` (`idClient`),
+  KEY `idPlat` (`idPlat`),
+  KEY `idResto` (`idResto`),
+  CONSTRAINT `commentaires_ibfk_3` FOREIGN KEY (`idResto`) REFERENCES `restaurants` (`id`),
+  CONSTRAINT `commentaires_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `clients` (`idClient`),
+  CONSTRAINT `commentaires_ibfk_2` FOREIGN KEY (`idPlat`) REFERENCES `plats` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 </tables>
