@@ -90,7 +90,7 @@ public class ConnectionFrame {
 		JLabel lblNewLabel_3 = new JLabel("");
 		lblNewLabel_3.setBounds(339, 0, 110, 152);
 		frmRestoTunisie.getContentPane().add(lblNewLabel_3);
-		lblNewLabel_3.setIcon(new ImageIcon("/img/resto_icone.jpg"));
+		lblNewLabel_3.setIcon(new ImageIcon("resto_icone.jpg"));
 		
 		JLabel lblRestoTunisie = new JLabel("Resto Tunisie");
 		lblRestoTunisie.setBounds(22, 11, 222, 55);
