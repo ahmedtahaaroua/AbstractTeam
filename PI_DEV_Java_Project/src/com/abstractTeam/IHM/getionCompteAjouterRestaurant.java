@@ -21,9 +21,9 @@ public class getionCompteAjouterRestaurant {
 	private JFrame frame;
 	private JTextField textFieldNomRestaurant;
 	private JTextField textFieldMail;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField textFieldMpw2;
+	private JTextField textFieldNbrTable;
+	private JTextField textFieldMpw;
 
 	/**
 	 * Launch the application.
@@ -140,40 +140,40 @@ public class getionCompteAjouterRestaurant {
 		lblConfirmerMotDe.setBounds(325, 227, 124, 14);
 		frame.getContentPane().add(lblConfirmerMotDe);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(470, 224, 216, 20);
-		frame.getContentPane().add(textField_2);
+		textFieldMpw2 = new JTextField();
+		textFieldMpw2.setColumns(10);
+		textFieldMpw2.setBounds(470, 224, 216, 20);
+		frame.getContentPane().add(textFieldMpw2);
 		
 		JLabel lblNombreTable = new JLabel("Nombre Table :");
 		lblNombreTable.setBounds(325, 277, 134, 14);
 		frame.getContentPane().add(lblNombreTable);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(470, 274, 216, 20);
-		frame.getContentPane().add(textField_3);
+		textFieldNbrTable = new JTextField();
+		textFieldNbrTable.setColumns(10);
+		textFieldNbrTable.setBounds(470, 274, 216, 20);
+		frame.getContentPane().add(textFieldNbrTable);
 		
 		JLabel lblMotDePasse = new JLabel("Mot de passe :");
 		lblMotDePasse.setBounds(325, 181, 124, 14);
 		frame.getContentPane().add(lblMotDePasse);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(470, 178, 216, 20);
-		frame.getContentPane().add(textField_4);
+		textFieldMpw = new JTextField();
+		textFieldMpw.setColumns(10);
+		textFieldMpw.setBounds(470, 178, 216, 20);
+		frame.getContentPane().add(textFieldMpw);
 		
 		JLabel lblAdresse = new JLabel("Adresse :");
 		lblAdresse.setBounds(325, 329, 46, 14);
 		frame.getContentPane().add(lblAdresse);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setBounds(470, 324, 216, 116);
-		frame.getContentPane().add(textArea);
+		JTextArea textAreaAdresse = new JTextArea();
+		textAreaAdresse.setBounds(470, 324, 216, 116);
+		frame.getContentPane().add(textAreaAdresse);
 		
-		JButton btnNewButton = new JButton("Images");
-		btnNewButton.setBounds(339, 456, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		JButton btnImage = new JButton("Images");
+		btnImage.setBounds(339, 456, 89, 23);
+		frame.getContentPane().add(btnImage);
 		
 		JButton btnOk = new JButton("Ok");
 		btnOk.setBounds(454, 456, 89, 23);
