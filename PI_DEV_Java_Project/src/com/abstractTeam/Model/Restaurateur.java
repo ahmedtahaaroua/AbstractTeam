@@ -1,43 +1,96 @@
-package com.abstractTeam.Model;
+package com.abstractTeam.models;
 
-import java.awt.EventQueue;
+import java.io.Serializable;
 
-import javax.swing.JFrame;
 
-public class Restaurateur {
+import java.util.List;
 
-	private JFrame frame;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Restaurateur window = new Restaurateur();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
+public class Restaurateur implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	private int id;
+
+	private String adresse;
+
+	private String mail;
+
+	private String mdp;
+
+	private String nom;
+
+	private String prenom;
+
+	private String tel;
+
+	private List<Restaurant> restaurants;
+
 	public Restaurateur() {
-		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(100, 100, 457, 309);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public int getId() {
+		return this.id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getAdresse() {
+		return this.adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+	public String getMail() {
+		return this.mail;
+	}
+
+	public void setMail(String mail) {
+		this.mail = mail;
+	}
+
+	public String getMdp() {
+		return this.mdp;
+	}
+
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
+	}
+
+	public String getNom() {
+		return this.nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return this.prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getTel() {
+		return this.tel;
+	}
+
+	public void setTel(String tel) {
+		this.tel = tel;
+	}
+
+	public List<Restaurant> getRestaurants() {
+		return this.restaurants;
+	}
+
+	public void setRestaurants(List<Restaurant> restaurants) {
+		this.restaurants = restaurants;
 	}
 
 }
