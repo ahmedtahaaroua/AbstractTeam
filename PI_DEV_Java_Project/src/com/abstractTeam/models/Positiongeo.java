@@ -2,7 +2,6 @@ package com.abstractTeam.models;
 
 import java.io.Serializable;
 
-import java.util.List;
 
 
 
@@ -25,6 +24,22 @@ public class Positiongeo implements Serializable {
 
 	public int getIdGeo() {
 		return this.idGeo;
+	}
+
+	public Client getClient() {
+		return client;
+	}
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
+
+	public Restaurant getRestaurant() {
+		return restaurant;
+	}
+
+	public void setRestaurant(Restaurant restaurant) {
+		this.restaurant = restaurant;
 	}
 
 	public void setIdGeo(int idGeo) {
