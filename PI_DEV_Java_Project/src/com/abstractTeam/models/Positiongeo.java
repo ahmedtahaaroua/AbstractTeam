@@ -1,4 +1,4 @@
-package com.abstractTeam.models;
+package com.abstractTeam.Model;
 
 import java.io.Serializable;
 
