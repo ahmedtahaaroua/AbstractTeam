@@ -1,4 +1,4 @@
-package model;
+package com.abstractTeam.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
@@ -6,22 +6,22 @@ import java.util.Date;
 
 
 /**
- * The persistent class for the reservations database table.
+ * The persistent class for the livraisons database table.
  * 
  */
 @Entity
-@Table(name="reservations")
-public class Reservation implements Serializable {
+@Table(name="livraisons")
+public class Livraison implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int idReservation;
-
-	private String choix;
+	private int idLivraison;
 
 	@Temporal(TemporalType.DATE)
-	private Date date;
+	private Date dateLivraison;
+
+	private String description;
 
 	//bi-directional many-to-one association to Client
 	@ManyToOne
@@ -38,31 +38,31 @@ public class Reservation implements Serializable {
 	@JoinColumn(name="idFacture")
 	private Facture facture;
 
-	public Reservation() {
+	public Livraison() {
 	}
 
-	public int getIdReservation() {
-		return this.idReservation;
+	public int getIdLivraison() {
+		return this.idLivraison;
 	}
 
-	public void setIdReservation(int idReservation) {
-		this.idReservation = idReservation;
+	public void setIdLivraison(int idLivraison) {
+		this.idLivraison = idLivraison;
 	}
 
-	public String getChoix() {
-		return this.choix;
+	public Date getDateLivraison() {
+		return this.dateLivraison;
 	}
 
-	public void setChoix(String choix) {
-		this.choix = choix;
+	public void setDateLivraison(Date dateLivraison) {
+		this.dateLivraison = dateLivraison;
 	}
 
-	public Date getDate() {
-		return this.date;
+	public String getDescription() {
+		return this.description;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public Client getClient() {

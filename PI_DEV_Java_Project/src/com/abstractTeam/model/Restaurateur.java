@@ -1,16 +1,17 @@
-package model;
+package com.abstractTeam.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import java.util.List;
 
 
 /**
- * The persistent class for the administrateurs database table.
+ * The persistent class for the restaurateurs database table.
  * 
  */
 @Entity
-@Table(name="administrateurs")
-public class Administrateur implements Serializable {
+@Table(name="restaurateurs")
+public class Restaurateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
@@ -29,7 +30,11 @@ public class Administrateur implements Serializable {
 
 	private String tel;
 
-	public Administrateur() {
+	//bi-directional many-to-one association to Restaurant
+	@OneToMany(mappedBy="restaurateur")
+	private List<Restaurant> restaurants;
+
+	public Restaurateur() {
 	}
 
 	public int getId() {
@@ -86,6 +91,28 @@ public class Administrateur implements Serializable {
 
 	public void setTel(String tel) {
 		this.tel = tel;
+	}
+
+	public List<Restaurant> getRestaurants() {
+		return this.restaurants;
+	}
+
+	public void setRestaurants(List<Restaurant> restaurants) {
+		this.restaurants = restaurants;
+	}
+
+	public Restaurant addRestaurant(Restaurant restaurant) {
+		getRestaurants().add(restaurant);
+		restaurant.setRestaurateur(this);
+
+		return restaurant;
+	}
+
+	public Restaurant removeRestaurant(Restaurant restaurant) {
+		getRestaurants().remove(restaurant);
+		restaurant.setRestaurateur(null);
+
+		return restaurant;
 	}
 
 }

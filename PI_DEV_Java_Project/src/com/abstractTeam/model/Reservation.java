@@ -1,36 +1,42 @@
-package com.abstractTeam.Model;
+package com.abstractTeam.model;
 
 import java.io.Serializable;
-
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 
+/**
+ * The persistent class for the reservations database table.
+ * 
+ */
+@Entity
+@Table(name="reservations")
 public class Reservation implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int idReservation;
 
 	private String choix;
 
-	
+	@Temporal(TemporalType.DATE)
 	private Date date;
 
-	//bi-directional many-to-many association to Bonplan
-	
-	private List<Bonplan> bonplans;
-
-	
-	private List<Plat> plats;
-
-
+	//bi-directional many-to-one association to Client
+	@ManyToOne
+	@JoinColumn(name="idClient")
 	private Client client;
 
-	
-	private Facture facture;
-
-
+	//bi-directional many-to-one association to Restaurant
+	@ManyToOne
+	@JoinColumn(name="idResto")
 	private Restaurant restaurant;
+
+	//bi-directional many-to-one association to Facture
+	@ManyToOne
+	@JoinColumn(name="idFacture")
+	private Facture facture;
 
 	public Reservation() {
 	}
@@ -59,22 +65,6 @@ public class Reservation implements Serializable {
 		this.date = date;
 	}
 
-	public List<Bonplan> getBonplans() {
-		return this.bonplans;
-	}
-
-	public void setBonplans(List<Bonplan> bonplans) {
-		this.bonplans = bonplans;
-	}
-
-	public List<Plat> getPlats() {
-		return this.plats;
-	}
-
-	public void setPlats(List<Plat> plats) {
-		this.plats = plats;
-	}
-
 	public Client getClient() {
 		return this.client;
 	}
@@ -83,20 +73,20 @@ public class Reservation implements Serializable {
 		this.client = client;
 	}
 
-	public Facture getFacture() {
-		return this.facture;
-	}
-
-	public void setFacture(Facture facture) {
-		this.facture = facture;
-	}
-
 	public Restaurant getRestaurant() {
 		return this.restaurant;
 	}
 
 	public void setRestaurant(Restaurant restaurant) {
 		this.restaurant = restaurant;
+	}
+
+	public Facture getFacture() {
+		return this.facture;
+	}
+
+	public void setFacture(Facture facture) {
+		this.facture = facture;
 	}
 
 }
