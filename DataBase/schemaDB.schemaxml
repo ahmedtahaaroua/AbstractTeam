@@ -5,55 +5,44 @@
 </source>
 <canvas zoom="100">
 <tables>
-<table name="administrateurs" view="colnames">
-<left>27</left>
-<top>51</top>
-<width>139</width>
-<height>197</height>
-<sql_create_table>CREATE TABLE `administrateurs` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(20) DEFAULT NULL,
-  `prenom` varchar(20) DEFAULT NULL,
-  `mail` varchar(20) DEFAULT NULL,
-  `mdp` varchar(20) DEFAULT NULL,
-  `adresse` varchar(20) DEFAULT NULL,
-  `tel` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
-</table>
 <table name="photos" view="colnames">
-<left>232</left>
-<top>398</top>
+<left>266</left>
+<top>360</top>
 <width>139</width>
-<height>152</height>
+<height>186</height>
 <sql_create_table>CREATE TABLE `photos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `url` varchar(100) NOT NULL,
   `description` varchar(200) NOT NULL,
   `id_resto` int(11) DEFAULT NULL,
   `idBonPlan` int(11) DEFAULT NULL,
+  `idPlat` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_resto` (`id_resto`),
   KEY `idBonPlan` (`idBonPlan`),
-  CONSTRAINT `photos_ibfk_2` FOREIGN KEY (`idBonPlan`) REFERENCES `bonplans` (`idBonPlan`),
-  CONSTRAINT `photos_ibfk_1` FOREIGN KEY (`id_resto`) REFERENCES `restaurants` (`id`)
+  KEY `FK_photos` (`idPlat`),
+  CONSTRAINT `FK_photos` FOREIGN KEY (`idPlat`) REFERENCES `plats` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `photos_ibfk_1` FOREIGN KEY (`id_resto`) REFERENCES `restaurants` (`id`),
+  CONSTRAINT `photos_ibfk_2` FOREIGN KEY (`idBonPlan`) REFERENCES `bonplans` (`idBonPlan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="plats" view="colnames">
-<left>44</left>
-<top>645</top>
+<left>40</left>
+<top>437</top>
 <width>128</width>
-<height>163</height>
+<height>184</height>
 <sql_create_table>CREATE TABLE `plats` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `label` varchar(100) NOT NULL,
   `description` varchar(1000) NOT NULL,
   `prix` double NOT NULL,
-  `id_photo` int(11) DEFAULT NULL,
   `note` double DEFAULT NULL,
+  `idMenus` int(11) DEFAULT NULL,
+  `idReservation` int(11) DEFAULT NULL,
+  `idLivraison` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `plats_ibfk_1` (`id_photo`),
-  CONSTRAINT `plats_ibfk_1` FOREIGN KEY (`id_photo`) REFERENCES `photos` (`id`)
+  KEY `idMenus` (`idMenus`),
+  CONSTRAINT `plats_ibfk_1` FOREIGN KEY (`idMenus`) REFERENCES `menus` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="restaurants" view="colnames">
@@ -80,8 +69,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="restaurateurs" view="colnames">
-<left>745</left>
-<top>649</top>
+<left>663</left>
+<top>663</top>
 <width>180</width>
 <height>197</height>
 <sql_create_table>CREATE TABLE `restaurateurs` (
@@ -111,8 +100,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="positionGeo" view="colnames">
-<left>783</left>
-<top>287</top>
+<left>940</left>
+<top>268</top>
 <width>131</width>
 <height>129</height>
 <sql_create_table>CREATE TABLE `positiongeo` (
@@ -123,8 +112,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="reservations" view="colnames">
-<left>739</left>
-<top>100</top>
+<left>921</left>
+<top>41</top>
 <width>142</width>
 <height>165</height>
 <sql_create_table>CREATE TABLE `reservations` (
@@ -144,10 +133,10 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="clients" view="colnames">
-<left>513</left>
-<top>172</top>
+<left>463</left>
+<top>164</top>
 <width>127</width>
-<height>183</height>
+<height>175</height>
 <sql_create_table>CREATE TABLE `clients` (
   `idClient` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(30) DEFAULT NULL,
@@ -163,8 +152,8 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="livraisons" view="colnames">
-<left>210</left>
-<top>128</top>
+<left>227</left>
+<top>103</top>
 <width>122</width>
 <height>163</height>
 <sql_create_table>CREATE TABLE `livraisons` (
@@ -175,17 +164,17 @@
   `idClient` int(11) DEFAULT NULL,
   `idResto` int(11) DEFAULT NULL,
   PRIMARY KEY (`idLivraison`),
+  UNIQUE KEY `idFacture` (`idFacture`),
   KEY `idClient` (`idClient`),
   KEY `idResto` (`idResto`),
-  KEY `idFacture` (`idFacture`),
-  CONSTRAINT `livraisons_ibfk_3` FOREIGN KEY (`idFacture`) REFERENCES `factures` (`idFacture`),
+  CONSTRAINT `aaaa` FOREIGN KEY (`idFacture`) REFERENCES `factures` (`idFacture`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `livraisons_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `clients` (`idClient`),
   CONSTRAINT `livraisons_ibfk_2` FOREIGN KEY (`idResto`) REFERENCES `restaurants` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="Factures" view="colnames">
-<left>488</left>
-<top>10</top>
+<left>579</left>
+<top>1</top>
 <width>108</width>
 <height>130</height>
 <sql_create_table>CREATE TABLE `factures` (
@@ -196,19 +185,21 @@
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="bonplans" view="colnames">
-<left>396</left>
-<top>610</top>
-<width>108</width>
-<height>112</height>
+<left>3</left>
+<top>277</top>
+<width>129</width>
+<height>117</height>
 <sql_create_table>CREATE TABLE `bonplans` (
   `idBonPlan` int(11) NOT NULL AUTO_INCREMENT,
   `description` varchar(500) NOT NULL,
+  `type` varchar(50) DEFAULT NULL,
+  `prix` double DEFAULT NULL,
   PRIMARY KEY (`idBonPlan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
 </table>
 <table name="commentaires" view="colnames">
-<left>569</left>
-<top>651</top>
+<left>975</left>
+<top>631</top>
 <width>134</width>
 <height>163</height>
 <sql_create_table>CREATE TABLE `commentaires` (
@@ -217,14 +208,56 @@
   `idPlat` int(11) DEFAULT NULL,
   `idClient` int(11) DEFAULT NULL,
   `idResto` int(11) DEFAULT NULL,
+  `idBonPlan` float DEFAULT NULL,
   PRIMARY KEY (`idCommentaire`),
   KEY `idClient` (`idClient`),
   KEY `idPlat` (`idPlat`),
   KEY `idResto` (`idResto`),
-  CONSTRAINT `commentaires_ibfk_3` FOREIGN KEY (`idResto`) REFERENCES `restaurants` (`id`),
   CONSTRAINT `commentaires_ibfk_1` FOREIGN KEY (`idClient`) REFERENCES `clients` (`idClient`),
-  CONSTRAINT `commentaires_ibfk_2` FOREIGN KEY (`idPlat`) REFERENCES `plats` (`id`)
+  CONSTRAINT `commentaires_ibfk_2` FOREIGN KEY (`idPlat`) REFERENCES `plats` (`id`),
+  CONSTRAINT `commentaires_ibfk_3` FOREIGN KEY (`idResto`) REFERENCES `restaurants` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8</sql_create_table>
+</table>
+<table name="menus" view="colnames">
+<left>152</left>
+<top>774</top>
+<width>116</width>
+<height>129</height>
+<sql_create_table>CREATE TABLE `menus` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(40) NOT NULL,
+  `idRestaurant` int(30) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idRestaurant` (`idRestaurant`),
+  CONSTRAINT `menus_ibfk_1` FOREIGN KEY (`idRestaurant`) REFERENCES `restaurants` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="ingredients" view="colnames">
+<left>496</left>
+<top>748</top>
+<width>108</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `ingredients` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `label` varchar(40) NOT NULL,
+  `description` varchar(1000) DEFAULT NULL,
+  `idPlat` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="platingredient" view="colnames">
+<left>247</left>
+<top>581</top>
+<width>115</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `platingredient` (
+  `idPlat` int(40) NOT NULL,
+  `idIngredient` int(40) NOT NULL,
+  PRIMARY KEY (`idPlat`,`idIngredient`),
+  KEY `idIngredient` (`idIngredient`),
+  CONSTRAINT `platingredient_ibfk_1` FOREIGN KEY (`idPlat`) REFERENCES `plats` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `platingredient_ibfk_2` FOREIGN KEY (`idIngredient`) REFERENCES `ingredients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
 </table>
 </tables>
 </canvas>
