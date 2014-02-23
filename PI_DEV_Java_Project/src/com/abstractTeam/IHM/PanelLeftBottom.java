@@ -16,8 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.MatteBorder;
 
-import com.abstractTeam.GestionResLiv.PanelLivraison;
-import com.abstractTeam.GestionResLiv.PanelReservations;
+import com.abstractTeam.IHM.GestionResLiv.PanelLivraison;
+import com.abstractTeam.IHM.GestionResLiv.PanelReservations;
 
 @SuppressWarnings("serial")
 public class PanelLeftBottom extends JPanel {

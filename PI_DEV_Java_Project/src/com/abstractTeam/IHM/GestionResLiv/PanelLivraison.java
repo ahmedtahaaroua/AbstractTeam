@@ -1,4 +1,4 @@
-package com.abstractTeam.GestionResLiv;
+package com.abstractTeam.IHM.GestionResLiv;
 
 
 

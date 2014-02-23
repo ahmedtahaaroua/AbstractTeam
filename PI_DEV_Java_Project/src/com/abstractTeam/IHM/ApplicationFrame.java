@@ -23,7 +23,8 @@ import javax.swing.JPopupMenu;
 import javax.swing.JToolBar;
 import javax.swing.JTree;
 
-import com.abstractTeam.GestionResLiv.PanelReservations;
+import com.abstractTeam.IHM.GestionResLiv.PanelReservations;
+
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 
