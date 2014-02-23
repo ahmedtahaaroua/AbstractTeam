@@ -97,6 +97,22 @@ public class PanelLeftBottom extends JPanel {
 		btnMesDocuments.setHorizontalAlignment(SwingConstants.LEFT);
 		btnMesDocuments.setBounds(10, 203, 317, 36);
 		add(btnMesDocuments);
+		
+		JButton btnStatistique = new JButton("Statistique\r\n");
+		btnStatistique.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				ApplicationFrame.content.remove(ApplicationFrame.panelContenu);
+				ApplicationFrame.panelContenu= new PanelStatistiqueRestaurant();
+				ApplicationFrame.content.add(ApplicationFrame.panelContenu);
+				ApplicationFrame.content.validate();
+				ApplicationFrame.content.repaint();
+				
+			}
+		});
+		btnStatistique.setHorizontalAlignment(SwingConstants.LEFT);
+		btnStatistique.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnStatistique.setBounds(10, 250, 317, 36);
+		add(btnStatistique);
 
 		JButton btnAdministration = new JButton("Administration");
 	
@@ -114,5 +130,4 @@ public class PanelLeftBottom extends JPanel {
 		setVisible(true);
 
 	}
-
 }
