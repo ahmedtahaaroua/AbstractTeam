@@ -114,6 +114,7 @@ public class ApplicationFrame extends JFrame {
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 
+				
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);

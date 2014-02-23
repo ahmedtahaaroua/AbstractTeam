@@ -14,7 +14,7 @@ import com.abstractTeam.model.Restaurateur;
 
 public class RestaurateurDAO {
 
-	@PersistenceContext(unitName = "test")
+	@PersistenceContext(unitName = "abstractteam")
 	private EntityManager entityManager;
 
 	public void createRestaurateur(Restaurateur Restaurateur) {
@@ -27,8 +27,7 @@ public class RestaurateurDAO {
 
 	
 	public Restaurateur readRestaurateur(int idPersonne) {
-		//Restaurateur personne = entityManager.find(Restaurateur.class, idPersonne);
-		//entityManager.refresh(personne);
+		
 		Restaurateur personne =	entityManager.find(Restaurateur.class, idPersonne);
 		return personne;
 	}

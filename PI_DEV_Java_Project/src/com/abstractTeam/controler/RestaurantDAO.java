@@ -14,7 +14,7 @@ import com.abstractTeam.model.Restaurant;
 
 public class RestaurantDAO {
 
-	@PersistenceContext(unitName = "test")
+	@PersistenceContext(unitName = "abstractteam")
 	private EntityManager entityManager;
 
 	public void createRestaurant(Restaurant Restaurant) {
