@@ -20,14 +20,14 @@ public class PanelInscriptionRestaurant extends JPanel {
 
 
 	JLabel lblNewLabel_1 = new JLabel("");
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
+	private JTextField textNom;
+	private JTextField textPrenom;
+	private JTextField textMail;
+	private JTextField textMDP;
+	private JTextField textConfirmMDP;
+	private JTextField textTel;
+	private JTextField textFax;
+	private JTextField textAddresse;
 
 	/**
 	 * Create the panel.
@@ -49,94 +49,94 @@ public class PanelInscriptionRestaurant extends JPanel {
 	
 		add(lblNewLabel_1);
 		
-		JPanel panel = new JPanel();
-		panel.setBounds(10, 23, 993, 577);
-		add(panel);
-		panel.setLayout(null);
+		JPanel panelConnection = new JPanel();
+		panelConnection.setBounds(10, 23, 993, 577);
+		add(panelConnection);
+		panelConnection.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Nom :");
 		lblNewLabel.setBounds(20, 23, 46, 14);
-		panel.add(lblNewLabel);
+		panelConnection.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setBounds(212, 20, 86, 20);
-		panel.add(textField);
-		textField.setColumns(10);
+		textNom = new JTextField();
+		textNom.setBounds(212, 20, 86, 20);
+		panelConnection.add(textNom);
+		textNom.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Prenom :");
 		lblNewLabel_2.setBounds(20, 81, 46, 14);
-		panel.add(lblNewLabel_2);
+		panelConnection.add(lblNewLabel_2);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(212, 78, 86, 20);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		textPrenom = new JTextField();
+		textPrenom.setBounds(212, 78, 86, 20);
+		panelConnection.add(textPrenom);
+		textPrenom.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Mail :");
 		lblNewLabel_3.setBounds(20, 134, 46, 14);
-		panel.add(lblNewLabel_3);
+		panelConnection.add(lblNewLabel_3);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(212, 131, 86, 20);
-		panel.add(textField_2);
-		textField_2.setColumns(10);
+		textMail = new JTextField();
+		textMail.setBounds(212, 131, 86, 20);
+		panelConnection.add(textMail);
+		textMail.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Mot de passe :");
 		lblNewLabel_4.setBounds(20, 191, 94, 20);
-		panel.add(lblNewLabel_4);
+		panelConnection.add(lblNewLabel_4);
 		
-		textField_3 = new JTextField();
-		textField_3.setBounds(212, 191, 86, 20);
-		panel.add(textField_3);
-		textField_3.setColumns(10);
+		textMDP = new JTextField();
+		textMDP.setBounds(212, 191, 86, 20);
+		panelConnection.add(textMDP);
+		textMDP.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Confirme mot de passe :");
 		lblNewLabel_5.setBounds(20, 248, 129, 14);
-		panel.add(lblNewLabel_5);
+		panelConnection.add(lblNewLabel_5);
 		
-		textField_4 = new JTextField();
-		textField_4.setBounds(212, 242, 86, 20);
-		panel.add(textField_4);
-		textField_4.setColumns(10);
+		textConfirmMDP = new JTextField();
+		textConfirmMDP.setBounds(212, 242, 86, 20);
+		panelConnection.add(textConfirmMDP);
+		textConfirmMDP.setColumns(10);
 		
 		JLabel lblNewLabel_6 = new JLabel("Tel :");
 		lblNewLabel_6.setBounds(20, 306, 80, 14);
-		panel.add(lblNewLabel_6);
+		panelConnection.add(lblNewLabel_6);
 		
-		textField_5 = new JTextField();
-		textField_5.setBounds(212, 300, 86, 20);
-		panel.add(textField_5);
-		textField_5.setColumns(10);
+		textTel = new JTextField();
+		textTel.setBounds(212, 300, 86, 20);
+		panelConnection.add(textTel);
+		textTel.setColumns(10);
 		
 		JLabel lblNewLabel_7 = new JLabel("Fax :");
 		lblNewLabel_7.setBounds(20, 361, 46, 20);
-		panel.add(lblNewLabel_7);
+		panelConnection.add(lblNewLabel_7);
 		
-		textField_6 = new JTextField();
-		textField_6.setBounds(212, 361, 86, 20);
-		panel.add(textField_6);
-		textField_6.setColumns(10);
+		textFax = new JTextField();
+		textFax.setBounds(212, 361, 86, 20);
+		panelConnection.add(textFax);
+		textFax.setColumns(10);
 		
 		JLabel lblNewLabel_8 = new JLabel("Adresse :");
 		lblNewLabel_8.setBounds(20, 414, 46, 14);
-		panel.add(lblNewLabel_8);
+		panelConnection.add(lblNewLabel_8);
 		
-		textField_7 = new JTextField();
-		textField_7.setBounds(212, 411, 129, 88);
-		panel.add(textField_7);
-		textField_7.setColumns(10);
+		textAddresse = new JTextField();
+		textAddresse.setBounds(212, 428, 129, 88);
+		panelConnection.add(textAddresse);
+		textAddresse.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Cree cmpte");
-		btnNewButton.setBounds(300, 527, 89, 23);
-		panel.add(btnNewButton);
+		JButton btnCreeCompte = new JButton("Cree cmpte");
+		btnCreeCompte.setBounds(300, 527, 89, 23);
+		panelConnection.add(btnCreeCompte);
 		
 		JLabel lblConnection = new JLabel("Connection");
 		lblConnection.setBounds(20, 485, 67, 14);
-		panel.add(lblConnection);
+		panelConnection.add(lblConnection);
 		
-		JLabel lblMotDePasse = new JLabel("mot de passe oubli\u00E9");
-		lblMotDePasse.setBounds(20, 518, 118, 14);
-		panel.add(lblMotDePasse);
+		JLabel PanelMDPoublié = new JLabel("mot de passe oubli\u00E9");
+		PanelMDPoublié.setBounds(20, 518, 118, 14);
+		panelConnection.add(PanelMDPoublié);
 		
 		
 	}
