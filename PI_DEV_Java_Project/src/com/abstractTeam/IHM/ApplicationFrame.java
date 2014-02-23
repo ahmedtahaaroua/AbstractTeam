@@ -24,6 +24,7 @@ import javax.swing.JToolBar;
 import javax.swing.JTree;
 
 import com.abstractTeam.IHM.GestionResLiv.PanelReservations;
+import com.abstractTeam.IHM.Inscription.PanelInscriptionRestaurant;
 
 import javax.swing.AbstractAction;
 import javax.swing.Action;
@@ -113,7 +114,11 @@ public class ApplicationFrame extends JFrame {
 		JMenuItem mntmNewMenuItem = new JMenuItem("Inscription");
 		mntmNewMenuItem.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-
+				ApplicationFrame.content.remove(ApplicationFrame.panelContenu);
+				ApplicationFrame.panelContenu= new PanelInscriptionRestaurant();
+				ApplicationFrame.content.add(ApplicationFrame.panelContenu);
+				ApplicationFrame.content.validate();
+				ApplicationFrame.content.repaint();
 			}
 		});
 		mnNewMenu.add(mntmNewMenuItem);
